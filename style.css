@@ -20,6 +20,7 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   border: 1px solid red;
+  position: relative;
 }
 .feature-lists {
   grid-column: 1 / span 4;
@@ -33,6 +34,9 @@
   grid-column: 5 / span 12;
   width: 90%;
   margin: 0px auto;
+  position: sticky;
+  top: 50px;
+  left: 50px;
 }
 .show-feature-image img {
   width: 100%;
@@ -68,13 +72,18 @@
   border: 1px solid red;
 }
 
-
-/* Transition effect for opacity change */
+/* Default opacity for inactive items */
 .feature-list-track {
+  opacity: 0.5;
   transition: opacity 0.3s ease-in-out;
 }
 
-/* Optional: Add transition to the image if you want a fade effect */
+/* Active style */
+.feature-list-track.active {
+  opacity: 1;
+}
+
+/* Optional: Add transition to the image for a fade effect */
 .show-feature-image img {
   transition: opacity 0.3s ease-in-out;
 }
