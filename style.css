@@ -3,9 +3,28 @@
   padding: 0;
   box-sizing: border-box;
 }
-:root{
-    --default_color: ""
+:root {
+  --default_color: "";
 }
 .notice-container {
   max-width: 1080px;
+  margin: 0 auto;
+}
+
+.feature-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  border: 1px solid red;
+}
+.feature-lists {
+  grid-column: 1 / span 4;
+  border: 1px solid red;
+}
+.show-feature-image {
+  grid-column: 5 / span 12;
+  width: 90%;
+  margin: auto;
+}
+.show-feature-image img {
+  width: 100%;
 }
