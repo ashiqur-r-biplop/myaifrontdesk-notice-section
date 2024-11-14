@@ -34,12 +34,13 @@
   grid-column: 5 / span 12;
   width: 90%;
   margin: 0px auto;
-  position: sticky;
-  top: 50px;
-  left: 50px;
+
 }
 .show-feature-image img {
   width: 100%;
+  position: sticky;
+  top: 50px;
+  left: 50px;
 }
 .notice-title-box {
   position: absolute;
