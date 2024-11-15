@@ -9,6 +9,7 @@
   --active_opacity: 1;
   --active_color: "";
   --lists-size: 34px;
+  --mobile-list-size: 18px;
 }
 .notice-container {
   max-width: 1080px;
@@ -92,4 +93,12 @@ li {
 /* Optional: Add transition to the image for a fade effect */
 .show-feature-image img {
   transition: opacity 0.3s ease-in-out;
+}
+@media screen and (max-width: 520px) {
+  .feature-list-track {
+    font-size: var(--mobile-list-size);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 700;
+    padding-top: 20px;
+  }
 }

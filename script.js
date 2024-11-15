@@ -4,20 +4,33 @@ const featureImage = document.querySelector(".show-feature-image img");
 
 // Define images for each feature
 const featureImages = [
-  "./image/Simpl_Setup.png",
-  "./image/Human_Like_Voices.png",
-  "./image/Clone_Own_Voice.png",
-  "./image/Insights.png",
-  "./image/7000_Integrations.png",
-  "./image/Built_In_CRM.png",
-  "./image/Transfer_Human.png",
-  "./image/Real_Time_Scheduling.png",
-  "./image/API_Integrations.png",
-  "./image/Summaries_Call_Logs.png",
-  "./image/AI_Powered_Texting.png",
-  "./image/Intake_Form_Workflows.png",
-  "./image/Texting_Workflows.png",
+  "https://storage.googleapis.com/msgsndr/iZ4eRuZciuwDa1wZMElO/media/6737a469f5dd35fe1976b7b7.png",
+  "https://storage.googleapis.com/msgsndr/iZ4eRuZciuwDa1wZMElO/media/6737a46946584e7b2c8fb6f1.png",
+  "https://storage.googleapis.com/msgsndr/iZ4eRuZciuwDa1wZMElO/media/6737a469f164ea59294b6795.png",
+  "https://storage.googleapis.com/msgsndr/iZ4eRuZciuwDa1wZMElO/media/6737a469f4ea130f91783f65.png",
+  "https://storage.googleapis.com/msgsndr/iZ4eRuZciuwDa1wZMElO/media/6737a469e92102a74242e8ae.png",
+  "https://storage.googleapis.com/msgsndr/iZ4eRuZciuwDa1wZMElO/media/6737a469f5dd353ddf76b7ba.png",
+  "https://storage.googleapis.com/msgsndr/iZ4eRuZciuwDa1wZMElO/media/6737a469e9210288c942e8af.png",
+  "https://storage.googleapis.com/msgsndr/iZ4eRuZciuwDa1wZMElO/media/6737a46946584e5b3f8fb6f0.png",
+  "https://storage.googleapis.com/msgsndr/iZ4eRuZciuwDa1wZMElO/media/6737a469e80f4166c90899ca.png",
+  "https://storage.googleapis.com/msgsndr/iZ4eRuZciuwDa1wZMElO/media/6737a469ec3e2f012da733c9.png",
+  "https://storage.googleapis.com/msgsndr/iZ4eRuZciuwDa1wZMElO/media/6737a46946584e33c68fb6f2.png",
+  "https://storage.googleapis.com/msgsndr/iZ4eRuZciuwDa1wZMElO/media/6737a469f5dd357c3a76b7b8.png",
+  "https://storage.googleapis.com/msgsndr/iZ4eRuZciuwDa1wZMElO/media/6737a469f5dd35034676b7b9.png",
 ];
+
+// Preload all feature images
+function preloadImages(imageUrls) {
+  imageUrls.forEach((url) => {
+    const img = new Image();
+    img.src = url; // This starts the download immediately
+  });
+}
+
+// Preload images on page load
+window.addEventListener("load", () => {
+  preloadImages(featureImages);
+});
 
 // Intersection Observer options
 const options = {
@@ -36,14 +49,16 @@ const observer = new IntersectionObserver((entries) => {
       // Set the active image and style for the feature list item
       featureImage.src = featureImages[index];
       featureLists.forEach((list, idx) => {
-        list.style.opacity = idx === index ? "var(--active_opacity)" : "var(--default_opacity)";
+        list.style.opacity =
+          idx === index ? "var(--active_opacity)" : "var(--default_opacity)";
       });
     } else if (entry.boundingClientRect.top > 0) {
       // Handle reverse scrolling to activate items
       const index = Array.from(featureLists).indexOf(entry.target);
 
       featureLists.forEach((list, idx) => {
-        list.style.opacity = idx === index ? "var(--active_opacity)" : "var(--default_opacity)";
+        list.style.opacity =
+          idx === index ? "var(--active_opacity)" : "var(--default_opacity)";
       });
       featureImage.src = featureImages[index];
     }
