@@ -21,9 +21,9 @@ const featureImages = [
 
 // Intersection Observer options
 const options = {
-  root: null,
-  rootMargin: "0px",
-  threshold: 0.5, // Trigger when 50% of the item is visible
+  root: null, // Observe the viewport
+  rootMargin: "-20% 0px -80% 0px", // Trigger when the section reaches 40% of the screen
+  threshold: 0, // Trigger as soon as the element enters/exits the rootMargin
 };
 
 // Create an Intersection Observer
@@ -35,10 +35,17 @@ const observer = new IntersectionObserver((entries) => {
 
       // Set the active image and style for the feature list item
       featureImage.src = featureImages[index];
-      featureLists.forEach(
-        (list) => (list.style.opacity = "var(--default_opacity)")
-      );
-      entry.target.style.opacity = "var(--active_opacity)";
+      featureLists.forEach((list, idx) => {
+        list.style.opacity = idx === index ? "var(--active_opacity)" : "var(--default_opacity)";
+      });
+    } else if (entry.boundingClientRect.top > 0) {
+      // Handle reverse scrolling to activate items
+      const index = Array.from(featureLists).indexOf(entry.target);
+
+      featureLists.forEach((list, idx) => {
+        list.style.opacity = idx === index ? "var(--active_opacity)" : "var(--default_opacity)";
+      });
+      featureImage.src = featureImages[index];
     }
   });
 }, options);
